@@ -50,19 +50,36 @@ public class Owner extends Person {
 	@NotEmpty
 	private String address;
 
+	public String publicMethod() {
+		return this.address;
+	}
+
 	@Column(name = "city")
 	@NotEmpty
 	private String city;
+
+	void PackagePrivateMethod() {
+		return;
+	}
 
 	@Column(name = "telephone")
 	@NotEmpty
 	@Digits(fraction = 0, integer = 10)
 	private String telephone;
 
+	private String privateMethod() {
+		publicMethod().chars();
+		return this.address;
+	}
+
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "owner_id")
 	@OrderBy("name")
 	private List<Pet> pets = new ArrayList<>();
+
+	protected void protectedMethod() {
+		return;
+	}
 
 	public String getAddress() {
 		return this.address;
@@ -72,6 +89,8 @@ public class Owner extends Person {
 		this.address = address;
 	}
 
+	String stringField;
+
 	public String getCity() {
 		return this.city;
 	}
@@ -79,6 +98,8 @@ public class Owner extends Person {
 	public void setCity(String city) {
 		this.city = city;
 	}
+
+	private int intField;
 
 	public String getTelephone() {
 		return this.telephone;
@@ -109,7 +130,6 @@ public class Owner extends Person {
 
 	/**
 	 * Return the Pet with the given id, or null if none found for this Owner.
-	 * @param name to test
 	 * @return a pet if pet id is already in use
 	 */
 	public Pet getPet(Integer id) {
