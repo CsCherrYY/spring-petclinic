@@ -1,8 +1,9 @@
 package org.springframework.samples.petclinic.owner;
 
+import java.util.List;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.List;
 
 public class test {
 
@@ -11,6 +12,7 @@ public class test {
 	@Nullable public String nullable() {
 		return "";
 	}
+
 
 	// case 1: return null in Nonnull methods
 	@Nonnull public String nonnull() {
@@ -23,6 +25,7 @@ public class test {
 
 	// case 2: directly use the return value of Nullable methods
 	public static void main(String[] args) {
+		//MemberRemoval
 		System.out.println(new test().nullable().length());
 		System.out.println(new test().nonnull().length());
 	}
@@ -40,6 +43,7 @@ public class test {
 
 	// case 4: Assign an Nullable variable to an Nonnull variable
 	void testList(@Nullable List<String> nullableList) {
+
 		@Nonnull List<String> list2 = nullableList;
 	}
 }

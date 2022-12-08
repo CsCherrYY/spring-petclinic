@@ -15,8 +15,12 @@
  */
 package org.springframework.samples.petclinic.owner;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -46,6 +50,8 @@ import org.springframework.util.Assert;
 @Table(name = "owners")
 public class Owner extends Person {
 
+    private static final Logger LOG = Logger.getLogger(Owner.class.getName());
+
 	@Column(name = "address")
 	@NotEmpty
 	private String address;
@@ -67,29 +73,22 @@ public class Owner extends Person {
 	@Digits(fraction = 0, integer = 10)
 	private String telephone;
 
-	private String privateMethod() {
-		publicMethod().chars();
-		return this.address;
-	}
-
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "owner_id")
 	@OrderBy("name")
 	private List<Pet> pets = new ArrayList<>();
 
-	protected void protectedMethod() {
-		return;
-	}
-
 	public String getAddress() {
 		return this.address;
+	}
+
+	public void test123() {
+		return;
 	}
 
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
-	String stringField;
 
 	public String getCity() {
 		return this.city;
@@ -98,8 +97,6 @@ public class Owner extends Person {
 	public void setCity(String city) {
 		this.city = city;
 	}
-
-	private int intField;
 
 	public String getTelephone() {
 		return this.telephone;
@@ -160,6 +157,19 @@ public class Owner extends Person {
 				}
 			}
 		}
+		switch (name) {
+			case "23":
+				String a = "1";
+				break;
+			default:
+				throw new AssertionError();
+		}
+		try {
+			String a = "1";
+			a.codePoints();
+		} catch (Exception e) {
+			String b = "!";
+		}
 		return null;
 	}
 
@@ -188,6 +198,10 @@ public class Owner extends Person {
 		pet.addVisit(visit);
 
 		return this;
+	}
+
+	private void test1() {
+		return;
 	}
 
 }

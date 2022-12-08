@@ -20,6 +20,9 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.samples.petclinic.model.NamedEntity;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,9 +32,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
-
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.samples.petclinic.model.NamedEntity;
 
 /**
  * Simple business object representing a pet.
@@ -64,7 +64,16 @@ public class Pet extends NamedEntity {
 	}
 
 	public LocalDate getBirthDate() {
+		String a = "";
 		return this.birthDate;
+	}
+
+	// the example of long comment and method aaaa aaaa aaaa aaaa aaaa aaaa aaaa
+	// aaaa aaaa aaaa aaaa aaaa aaaa
+	private void examplePrintNumber(int firstExamplePrintNumber, int secondExmaplePrintNumber,
+			int thirdExamplePrintNumber, int fourthExamplePrintNumber, int fifthExamplePrintNumber) {
+		System.out.println(firstExamplePrintNumber + secondExmaplePrintNumber + thirdExamplePrintNumber
+				+ fourthExamplePrintNumber + fifthExamplePrintNumber);
 	}
 
 	public PetType getType() {
@@ -80,6 +89,7 @@ public class Pet extends NamedEntity {
 	}
 
 	public void addVisit(Visit visit) {
+		Personn nn = new Personn();
 		getVisits().add(visit);
 	}
 
